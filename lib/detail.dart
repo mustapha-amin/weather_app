@@ -41,7 +41,10 @@ class _DetailPageState extends State<DetailPage> {
                 ),
                 Text(
                   weather.cityName!,
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 40),
+                ),
+                SizedBox(
+                  height: 30,
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,22 +53,26 @@ class _DetailPageState extends State<DetailPage> {
                     Text(
                       weather.temp!.toString(),
                       style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 50,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.black,
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     // oops i don't have a degree symbol
                     Text("o", style: TextStyle(fontWeight: FontWeight.bold))
                   ],
                 ),
+                SizedBox(
+                  height: 15,
+                ),
                 Text(
                   weather.decription!,
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 24,
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Text(
                   "Humidity level: " + weather.humidity.toString() + "%",
