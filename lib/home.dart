@@ -35,29 +35,18 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
               child: TextFormField(
                 controller: textEditingController,
+                textInputAction: TextInputAction.search,
+                onFieldSubmitted: (val) {
+                  Navigator.push(context, MaterialPageRoute(builder: (conetxt) {
+                    return DetailPage(
+                      cityName: textEditingController.text,
+                    );
+                  })).whenComplete(() => textEditingController.clear());
+                },
                 decoration: InputDecoration(
-                  suffixIcon: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Ink(
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        color: Colors.green[700],
-                      ),
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (conetxt) {
-                            return DetailPage(
-                              cityName: textEditingController.text,
-                            );
-                          })).whenComplete(() => textEditingController.clear());
-                        },
-                        color: Colors.white,
-                        icon: Icon(Icons.search),
-                      ),
-                    ),
+                  suffixIcon: Icon(
+                    Icons.search,
+                    color: Colors.green,
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),

@@ -23,4 +23,8 @@ class HttpService {
       throw (response);
     }
   }
+
+  // static Future<Weather> getWeatherForecast(){
+  //   var uri = Uri
+  // }
 }
