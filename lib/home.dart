@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.grey[40],
+      backgroundColor: Colors.grey[300],
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -28,21 +28,22 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.only(top: 3),
               child: Text(
                 "Weatherie",
-                style: GoogleFonts.roboto(
+                style: GoogleFonts.lato(
                   fontSize: 50,
                 ),
               ),
             ),
+            SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 10, right: 10,),
               child: Card(
                 elevation: 2,
                 shadowColor: Colors.grey,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
-                child: ListTile(
-                  title: TextFormField(
+                child: 
+                   TextFormField(
                     controller: textEditingController,
                     textInputAction: TextInputAction.search,
                     onFieldSubmitted: (val) {
@@ -62,18 +63,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.green,
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(color: Colors.white),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(color: Colors.white),
                       ),
                       hintText: 'city name',
                     ),
                   ),
                 ),
-              ),
+              
             ),
           ],
         ),

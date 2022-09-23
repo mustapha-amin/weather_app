@@ -40,7 +40,6 @@ class _DetailPageState extends State<DetailPage> {
                 children: [
                   Image.network(
                     weather.icon,
-                    scale: 0.5,
                   ),
                   Text(
                     weather.cityName!,
@@ -48,7 +47,7 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                   Text("lat: " +
                       weather.lat.toString() +
-                      "  long: " +
+                      " | long: " +
                       weather.lon.toString()),
                   SizedBox(
                     height: 30,
