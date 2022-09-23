@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/http/http_service.dart';
 import '/detail.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.only(top: 3),
               child: Text(
                 "Weatherie",
-                style: GoogleFonts.aclonica(
+                style: GoogleFonts.roboto(
                   fontSize: 50,
                 ),
               ),

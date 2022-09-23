@@ -40,6 +40,7 @@ class _DetailPageState extends State<DetailPage> {
                 children: [
                   Image.network(
                     weather.icon,
+                    scale: 0.5,
                   ),
                   Text(
                     weather.cityName!,
