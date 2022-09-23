@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '/http/http_service.dart';
 import '/models/weather.dart';
@@ -34,52 +36,57 @@ class _DetailPageState extends State<DetailPage> {
           if (snapshot.hasData) {
             Weather weather = snapshot.data!;
             return Center(
-                child: Column(
-              children: [
-                Image.network(
-                  weather.icon,
-                ),
-                Text(
-                  weather.cityName!,
-                  style: TextStyle(fontSize: 40),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      weather.temp!.toString(),
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    // oops i don't have a degree symbol
-                    Text("o", style: TextStyle(fontWeight: FontWeight.bold))
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  weather.decription!,
-                  style: TextStyle(
-                    fontSize: 24,
+              child: Column(
+                children: [
+                  Image.network(
+                    weather.icon,
                   ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  "Humidity level: " + weather.humidity.toString() + "%",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
-            ));
+                  Text(
+                    weather.cityName!,
+                    style: TextStyle(fontSize: 40),
+                  ),
+                  Text("lat: " +
+                      weather.lat.toString() +
+                      "  long: " +
+                      weather.lon.toString()),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        weather.temp!.toString(),
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      // oops i don't have a degree symbol
+                      Text("o", style: TextStyle(fontWeight: FontWeight.bold))
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    weather.decription!,
+                    style: TextStyle(
+                      fontSize: 24,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    "Humidity level: " + weather.humidity.toString() + "%",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            );
           } else {
             return Center(
               child: CircularProgressIndicator(),

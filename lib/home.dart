@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/http/http_service.dart';
 import '/detail.dart';
-import 'http/http_service.dart';
-import '/models/weather.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,15 +14,19 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[40],
       body: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            SizedBox(
+              height: size.height / 5,
+            ),
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.only(top: 3),
               child: Text(
                 "Weatherie",
                 style: GoogleFonts.aclonica(
@@ -32,31 +35,44 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
-              child: TextFormField(
-                controller: textEditingController,
-                textInputAction: TextInputAction.search,
-                onFieldSubmitted: (val) {
-                  Navigator.push(context, MaterialPageRoute(builder: (conetxt) {
-                    return DetailPage(
-                      cityName: textEditingController.text,
-                    );
-                  })).whenComplete(() => textEditingController.clear());
-                },
-                decoration: InputDecoration(
-                  suffixIcon: Icon(
-                    Icons.search,
-                    color: Colors.green,
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                elevation: 2,
+                shadowColor: Colors.grey,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: ListTile(
+                  title: TextFormField(
+                    controller: textEditingController,
+                    textInputAction: TextInputAction.search,
+                    onFieldSubmitted: (val) {
+                      val != ''
+                          ? Navigator.push(context,
+                                  MaterialPageRoute(builder: (conetxt) {
+                              return DetailPage(
+                                cityName: textEditingController.text,
+                              );
+                            }))
+                              .whenComplete(() => textEditingController.clear())
+                          : null;
+                    },
+                    decoration: InputDecoration(
+                      suffixIcon: Icon(
+                        Icons.search,
+                        color: Colors.green,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      hintText: 'city name',
+                    ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.green),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.green),
-                  ),
-                  hintText: 'city name',
                 ),
               ),
             ),

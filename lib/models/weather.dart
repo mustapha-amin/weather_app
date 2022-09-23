@@ -43,7 +43,8 @@
 
 class Weather {
   String? cityName;
-  Cord? cord;
+  double? lon;
+  double? lat;
   double? temp;
   int? pressure;
   int? humidity;
@@ -51,7 +52,8 @@ class Weather {
   String? iconUrl;
   Weather({
     this.cityName,
-    this.cord,
+    this.lon,
+    this.lat,
     this.temp,
     this.humidity,
     this.decription,
@@ -66,23 +68,13 @@ class Weather {
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
       cityName: json['name'],
-      cord: Cord.fromJson(json),
+      lon: json['coord']['lon'],
+      lat: json['coord']['lat'],
       temp: json['main']['temp'],
       humidity: json['main']['humidity'] as int?,
       pressure: json['main']['pressure'] as int?,
       decription: json['weather'][0]['description'],
       iconUrl: json['weather'][0]['icon'],
     );
-  }
-}
-
-class Cord {
-  String? lon;
-  String? lat;
-
-  Cord({this.lon, this.lat});
-
-  factory Cord.fromJson(Map<String, dynamic> json) {
-    return Cord(lon: json['lon'], lat: json['lat']);
   }
 }
